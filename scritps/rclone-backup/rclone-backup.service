@@ -1,0 +1,14 @@
+[Unit]
+Description=Rclone Backup Service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/etc/systemd
+EnvironmentFile=/etc/systemd/rclone-backup.config
+ExecStart=/etc/systemd/rclone-backup.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

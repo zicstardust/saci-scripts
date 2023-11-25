@@ -1,0 +1,14 @@
+[Unit]
+Description=Backup to Disks Service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/etc/systemd
+EnvironmentFile=/etc/systemd/backup-to-disks.config
+ExecStart=/etc/systemd/backup-to-disks.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

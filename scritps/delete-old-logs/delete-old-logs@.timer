@@ -1,0 +1,12 @@
+[Unit]
+Description=Delete Old Saci Script Logs Timer
+Requires=delete-old-logs.service
+
+[Timer]
+Unit=delete-old-logs.service
+AccuracySec=1ms
+RandomizedDelaySec=0
+OnCalendar=%i
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Rclone Backup Timer
+Requires=rclone-backup.service
+
+[Timer]
+Unit=rclone-backup.service
+AccuracySec=1ms
+RandomizedDelaySec=0
+OnCalendar=%i
+
+[Install]
+WantedBy=timers.target

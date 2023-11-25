@@ -1,0 +1,12 @@
+[Unit]
+Description=Backup to Disks Timer
+Requires=backup-to-disks.service
+
+[Timer]
+Unit=backup-to-disks.service
+AccuracySec=1ms
+RandomizedDelaySec=0
+OnCalendar=%i
+
+[Install]
+WantedBy=timers.target

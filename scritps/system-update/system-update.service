@@ -1,0 +1,14 @@
+[Unit]
+Description=System Update Service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/etc/systemd
+EnvironmentFile=/etc/systemd/system-update.config
+ExecStart=/etc/systemd/system-update.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

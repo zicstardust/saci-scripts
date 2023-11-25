@@ -1,0 +1,12 @@
+[Unit]
+Description=System Update Timer
+Requires=system-update.service
+
+[Timer]
+Unit=system-update.service
+AccuracySec=1ms
+RandomizedDelaySec=0
+OnCalendar=%i
+
+[Install]
+WantedBy=timers.target
