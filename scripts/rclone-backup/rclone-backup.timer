@@ -6,7 +6,7 @@ Requires=rclone-backup.service
 Unit=rclone-backup.service
 AccuracySec=1ms
 RandomizedDelaySec=0
-OnCalendar=%i
+OnCalendar=*-*-* 04:00:00
 
 [Install]
 WantedBy=timers.target

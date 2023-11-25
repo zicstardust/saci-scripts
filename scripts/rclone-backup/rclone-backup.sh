@@ -5,13 +5,15 @@ config_file=${script_dir}/rclone-backup.config
 source $config_file
 
 start(){
+    echo "=============Start rclone backup===================="
     if [ ${REMOTE_TO_LOCAL[$i]} == "S" ];then
-        echo "==========BACKUP FROM ${REMOTE[$i]}:${SOURCE_DIR[$i]} TO ${DESTINY_DIR[$i]}===================="
+        echo "---BACKUP FROM ${REMOTE[$i]}:${SOURCE_DIR[$i]} TO ${DESTINY_DIR[$i]}---"
         rclone sync "${REMOTE[$i]}:${SOURCE_DIR[$i]}" "${DESTINY_DIR[$i]}" -v
     else
-        echo "==========BACKUP FROM ${SOURCE_DIR[$i]} TO ${REMOTE[$i]}:${DESTINY_DIR[$i]}===================="
+        echo "---BACKUP FROM ${SOURCE_DIR[$i]} TO ${REMOTE[$i]}:${DESTINY_DIR[$i]}---"
         rclone sync "${SOURCE_DIR[$i]}" "${REMOTE[$i]}:${DESTINY_DIR[$i]}" -v
     fi
+    echo "=============End rclone backup===================="
 }
 
 gen-config-file(){

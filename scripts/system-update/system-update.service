@@ -6,7 +6,6 @@ Wants=system-update.timer
 Type=oneshot
 User=root
 WorkingDirectory=/etc/systemd
-EnvironmentFile=/etc/systemd/system-update.config
 ExecStart=/etc/systemd/system-update.sh
 StandardOutput=journal
 StandardError=journal

@@ -1,12 +1,12 @@
 [Unit]
-Description=Backup to Disks Service
+Description=Rclone Backup Service
+Wants=rclone-backup.timer
 
 [Service]
 Type=oneshot
 User=root
 WorkingDirectory=/etc/systemd
-EnvironmentFile=/etc/systemd/backup-to-disks.config
-ExecStart=/etc/systemd/backup-to-disks.sh
+ExecStart=/etc/systemd/rclone-backup.sh
 StandardOutput=journal
 StandardError=journal
 

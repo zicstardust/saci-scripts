@@ -5,6 +5,7 @@ config_file=${script_dir}/backup-to-disks.config
 source $config_file
 
 start(){
+    echo "===========START BACKUP TO DISKS============"
     mkdir -p ${MOUNT_DIR[$i]}
     rm -Rf ${MOUNT_DIR}[$i]/*
     
@@ -21,7 +22,7 @@ start(){
         echo "error to mount to ${MOUNT_DIR[$i]}"
         return
     fi
-    echo "##############BACKUPS TO ${MOUNT_DIR[$i]}#########################"
+    echo "==BACKUPS TO ${MOUNT_DIR[$i]}=="
     
     for j in ${BACKUP_DIR[$i]}; do
         echo "-----------------$j-----------------------"
@@ -49,6 +50,7 @@ start(){
     if [ ! -z ${LUKS_KEY[$i]} ] && [ ! -z ${LUKS_UUID[$i]} ] ; then
         /usr/sbin/cryptsetup luksClose ${LUKS_NAME[$i]}
     fi
+        echo "==========END BACKUP TO DISKS============="
 }
 
 gen-config-file(){
