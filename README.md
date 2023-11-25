@@ -1,6 +1,6 @@
 # Install
 ```bash
-wget | bash
+curl https://raw.githubusercontent.com/zicstardust/saci-scripts/main/install.sh | bash
 ```
 
 # Gen Config files
