@@ -1,5 +1,6 @@
 [Unit]
 Description=System Update Service
+Wants=system-update.timer
 
 [Service]
 Type=oneshot

@@ -6,7 +6,7 @@ Requires=system-update.service
 Unit=system-update.service
 AccuracySec=1ms
 RandomizedDelaySec=0
-OnCalendar=%i
+OnCalendar=Sun *-*-* 00:06:00
 
 [Install]
 WantedBy=timers.target

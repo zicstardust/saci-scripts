@@ -5,6 +5,7 @@ config_file=${script_dir}/system-update.config
 source $config_file
 
 start(){
+    echo "---------------Start update---------------"
     apt update -y
     apt upgrade -y
     apt autoremove -y
@@ -13,6 +14,7 @@ start(){
     for i in ${directories}; do
         sudo su -c "git -C ${REPOS_DIR}/${i} pull" ${OS_USER}
     done
+    echo "---------------End update-----------------"
 }
 
 gen-config-file(){
@@ -28,17 +30,17 @@ EOF
 
 check_and_run (){
     if [ -z ${REPOS_DIR} ]; then
-        echo "REPOS_DIR not declared in env file"
-        return
+        echo "REPOS_DIR not declared in config file"
+        exit 2
     elif [ -z ${OS_USER} ]; then
-        echo "OS_USER not declared in env file"
-        return
+        echo "OS_USER not declared in config file"
+        exit 2
     else
         start
     fi
 }
 
-if [ $1 == "gen-config-file" ]; then
+if [ "${1}" == "gen-config-file" ]; then
     gen-config-file
 else
     check_and_run
