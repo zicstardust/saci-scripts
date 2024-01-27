@@ -20,7 +20,7 @@ systemctl enable --now system-update.timer
 
 # Logs
 ```bash
-journalctl -u backup-to-disks.service
-journalctl -u rclone-backup.service
-journalctl -u system-update.service
+journalctl -e -u backup-to-disks.service
+journalctl -e -u rclone-backup.service
+journalctl -e -u system-update.service
 ```
