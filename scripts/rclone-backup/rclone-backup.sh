@@ -8,10 +8,10 @@ start(){
     echo "=============Start rclone backup===================="
     if [ ${REMOTE_TO_LOCAL[$i]} == "S" ];then
         echo "---BACKUP FROM ${REMOTE[$i]}:${SOURCE_DIR[$i]} TO ${DESTINY_DIR[$i]}---"
-        rclone sync "${REMOTE[$i]}:${SOURCE_DIR[$i]}" "${DESTINY_DIR[$i]}" -v
+        rclone sync "${REMOTE[$i]}:${SOURCE_DIR[$i]}" "${DESTINY_DIR[$i]} ${EXTRAS_ARGS[$i]}" -v
     else
         echo "---BACKUP FROM ${SOURCE_DIR[$i]} TO ${REMOTE[$i]}:${DESTINY_DIR[$i]}---"
-        rclone sync "${SOURCE_DIR[$i]}" "${REMOTE[$i]}:${DESTINY_DIR[$i]}" -v
+        rclone sync "${SOURCE_DIR[$i]}" "${REMOTE[$i]}:${DESTINY_DIR[$i]} ${EXTRAS_ARGS[$i]}" -v
     fi
     echo "=============End rclone backup===================="
 }
@@ -25,6 +25,7 @@ REMOTE_TO_LOCAL[0]=
 REMOTE[0]=
 SOURCE_DIR[0]=
 DESTINY_DIR[0]=
+EXTRAS_ARGS[0]=
 
 EOF
 }
@@ -36,7 +37,7 @@ check_and_run (){
     done
 }
 
-if [ $1 == "gen-config-file" ]; then
+if [ "$1" == "gen-config-file" ]; then
     gen-config-file
 else
     check_and_run
