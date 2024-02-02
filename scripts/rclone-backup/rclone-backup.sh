@@ -6,12 +6,19 @@ source $config_file
 
 start(){
     echo "=============Start rclone backup===================="
+
+    if [ -z ${EXTRAS_ARGS[$i]} ];then
+        FLAGS=""    
+    else    
+        FLAGS="-f ${EXTRAS_ARGS[$i]}" 
+    fi  
+   
     if [ ${REMOTE_TO_LOCAL[$i]} == "S" ];then
         echo "---BACKUP FROM ${REMOTE[$i]}:${SOURCE_DIR[$i]} TO ${DESTINY_DIR[$i]}---"
-        rclone sync "${REMOTE[$i]}:${SOURCE_DIR[$i]}" "${DESTINY_DIR[$i]} ${EXTRAS_ARGS[$i]}" -v
+        rclone sync "${REMOTE[$i]}:${SOURCE_DIR[$i]}" "${DESTINY_DIR[$i]}" ${FLAGS} -v          
     else
         echo "---BACKUP FROM ${SOURCE_DIR[$i]} TO ${REMOTE[$i]}:${DESTINY_DIR[$i]}---"
-        rclone sync "${SOURCE_DIR[$i]}" "${REMOTE[$i]}:${DESTINY_DIR[$i]} ${EXTRAS_ARGS[$i]}" -v
+        rclone sync "${SOURCE_DIR[$i]}" "${REMOTE[$i]}:${DESTINY_DIR[$i]}" ${FLAGS} -v          
     fi
     echo "=============End rclone backup===================="
 }
