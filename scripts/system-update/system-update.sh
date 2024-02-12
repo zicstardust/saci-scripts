@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-#script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-#config_file=${script_dir}/system-update.config
-#source $config_file
-
 start(){
     echo "---------------Start update---------------"
     apt update -y
@@ -21,7 +17,16 @@ gen-config-file(){
 EOF
 }
 
+check_root(){
+    is_root=$(whoami)
+    if [ ${is_root} != "root" ]; then
+	    echo "run as root"
+	    exit 2
+    fi
+}
+
 check_and_run (){
+    check_root
     start    
 }
 

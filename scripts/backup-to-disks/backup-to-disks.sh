@@ -68,7 +68,16 @@ BACKUP_DIR[0]=
 EOF
 }
 
+check_root(){
+    is_root=$(whoami)
+    if [ ${is_root} != "root" ]; then
+	    echo "run as root"
+	    exit 2
+    fi
+}
+
 check_and_run (){
+    check_root
     size=${#MOUNT_DIR[@]}
     for (( i=0; i<${size}; i++)); do
         if [ -z ${MOUNT_DIR[$i]} ]; then
