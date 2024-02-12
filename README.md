@@ -1,4 +1,8 @@
-# Install
+# Install systemd user
+```bash
+curl https://raw.githubusercontent.com/zicstardust/saci-scripts/main/install.sh | bash -s --user
+```
+# Install systemd system
 ```bash
 curl https://raw.githubusercontent.com/zicstardust/saci-scripts/main/install.sh | bash
 ```
