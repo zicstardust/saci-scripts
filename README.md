@@ -3,14 +3,14 @@
 curl https://raw.githubusercontent.com/zicstardust/saci-scripts/main/install.sh | bash
 ```
 
-# Gen Config files
+# Generate config files
 ```bash
 /etc/systemd/backup-to-disks.sh gen-config-file
 /etc/systemd/rclone-backup.sh gen-config-file
 /etc/systemd/system-update.sh gen-config-file
 ```
 
-# Active
+# Enable
 
 ```bash
 systemctl enable --now backup-to-disks.timer
